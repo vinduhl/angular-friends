@@ -21,12 +21,8 @@
         <input class="form-control" placeholder="Search Location" ng-model="friendFilter.current_location.name">
 
 
-        <select class="input-medium" ng-model="sortProperty">
-          <option value="name">Name</option>
-          <option value="friend_count">#Friends</option>
-          <option value="current_lcoation.city">City</option>
-          <option value="current_location.state">State</option>
-          <option value="current_location.country">Country</option>
+        <select class="input-medium" ng-model="sortProperty" ng-options="property.propDisplay for property in sortPropertyOptions">
+          <option value="">-- choose property --</option>
         </select>
 
         <select class="input-medium" ng-model="sortDirection" ng-change="isReversed = sortDirection === '+'">
@@ -38,7 +34,7 @@
     </form>
 
     <ul>
-      <li class='friend' ng-repeat="friend in friends | filter: friendFilter | orderBy: sortProperty : isReversed">
+      <li class='friend' ng-repeat="friend in friends | filter: friendFilter | orderBy: sortProperty.propName : isReversed">
         <img class="profile-pic" ng-src='{{ friend.pic_square }}'>
 
         <h3>{{ friend.name }}</h3>

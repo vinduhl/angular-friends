@@ -3,9 +3,20 @@ angular.module("app")
 
     $scope.friends = friends;
 
-    $scope.sortProperty = "name";
+
     $scope.isReversed = false;
     $scope.sortDirection = $scope.isReversed ? "+" : "-";
+
+    $scope.sortPropertyOptions = [
+      { propDisplay: "Name", propName: "name" },
+      { propDisplay: "#Friends", propName: "friend_count" },
+      { propDisplay: "City", propName: "current_location.city" },
+      { propDisplay: "State", propName: "current_location.state" },
+      { propDisplay: "Country", propName: "current_location.country" }
+    ];
+
+    $scope.sortProperty = $scope.sortPropertyOptions[0];
+
   });
 
 var friends = [
